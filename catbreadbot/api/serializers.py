@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 class MessageSerializer(serializers.ModelSerializer):
-    bot_response = serializers.PrimaryKeyRelatedField(read_only=True)
+    bot_response = serializers.SlugRelatedField(slug_field='text', read_only=True)
 
     def save(self, **kwargs):
         super().save(**kwargs)

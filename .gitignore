@@ -1,3 +1,4 @@
 .idea
 data/
 venv/
+catbreadbot/api/__pycache__/
