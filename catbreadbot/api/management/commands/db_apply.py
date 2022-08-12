@@ -12,7 +12,6 @@ class Command(BaseCommand):
         json_file = open('questions.json')
         data = json.load(json_file)
         for i, row in enumerate(data['rows']):
-            new_row = BotResponse(id=i+1, text=row[1], message_yes=BotResponse.objects.all().filter(id=row[2]).first() if row[2]
-            else None, message_no=BotResponse.objects.all().filter(id=row[3]).first() if row[3] else None)
+            new_row = BotResponse(id=i+1, text=row[1], message_yes=BotResponse.objects.all().filter(id=row[2]).first()
+            if row[2] else None, message_no=BotResponse.objects.all().filter(id=row[3]).first() if row[3] else None)
             new_row.save()
-        self.stdout.write("It's now %s" % data)

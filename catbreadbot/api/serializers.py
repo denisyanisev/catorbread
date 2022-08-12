@@ -4,13 +4,14 @@ from rest_framework import serializers
 
 class MessageSerializer(serializers.ModelSerializer):
     bot_response = serializers.SlugRelatedField(slug_field='text', read_only=True)
+    parsed_answer = serializers.BooleanField(read_only=True)
 
     def save(self, **kwargs):
         super().save(**kwargs)
 
     class Meta:
         model = Message
-        fields = ['id', 'user_id', 'text', 'bot_response']
+        fields = ['id', 'user_id', 'text', 'bot_response', 'parsed_answer']
 
 
 class BotResponseSerializer(serializers.ModelSerializer):
